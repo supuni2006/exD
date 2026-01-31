@@ -193,7 +193,6 @@ export function LoginPage() {
           <p className="text-center text-sm text-muted-foreground">
             Don't have an account?{' '}
             <Button variant="link" className="p-0 h-auto font-semibold text-primary">
-              exD exministrator
               Contact your administrator
             </Button>
           </p>
