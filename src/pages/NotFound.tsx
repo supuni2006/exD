@@ -1,7 +1,11 @@
-import { useLocation } from "react-router-dom";
+import { ExDLogo } from "@/components/ExDLogo";
+import { Button } from "@/components/ui/button";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Home, ArrowLeft } from "lucide-react";
 import { useEffect } from "react";
 
 const NotFound = () => {
+  const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
@@ -9,13 +13,28 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
-          Return to Home
-        </a>
+    <div className="min-h-screen bg-background flex items-center justify-center p-6">
+      <div className="text-center space-y-6 max-w-md">
+        <ExDLogo size="xl" className="justify-center" />
+        
+        <div className="space-y-2">
+          <h1 className="text-7xl font-display font-bold text-primary">404</h1>
+          <p className="text-xl font-medium text-foreground">Page Not Found</p>
+          <p className="text-muted-foreground">
+            The page you're looking for doesn't exist or has been moved.
+          </p>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Button variant="outline" onClick={() => navigate(-1)}>
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Go Back
+          </Button>
+          <Button variant="hero" onClick={() => navigate("/")}>
+            <Home className="w-4 h-4 mr-2" />
+            Back to Dashboard
+          </Button>
+        </div>
       </div>
     </div>
   );
